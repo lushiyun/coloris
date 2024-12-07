@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./styles/global.css";
+import "@/styles/global.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const generalSans = localFont({
 	src: "./fonts/GeneralSans.woff2",
@@ -19,9 +20,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${generalSans.variable} container p-6`}>
-				{children}
-			</body>
+			<ThemeProvider
+				attribute="class"
+				defaultTheme="system"
+				enableSystem
+				disableTransitionOnChange
+			>
+				<body className={`${generalSans.variable} container p-6`}>
+					{children}
+				</body>
+			</ThemeProvider>
 		</html>
 	);
 }
