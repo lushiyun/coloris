@@ -1,0 +1,23 @@
+{
+  "name": "coloris-js",
+  "version": "1.0.0",
+  "description": "A color palette generator",
+  "keywords": [
+    "color",
+    "palette",
+    "typescript"
+  ],
+  "homepage": "https://github.com/mattpocock/tt-package-demo",
+  "bugs": {
+    "url": "https://github.com/mattpocock/tt-package-demo/issues"
+  },
+  "author": "Shiyun Lu <shiyunlu.hi@gmail.com> (https://shiyunlu.com)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattpocock/tt-package-demo.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module"
+}
