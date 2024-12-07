@@ -7,17 +7,34 @@
     "palette",
     "typescript"
   ],
-  "homepage": "https://github.com/mattpocock/tt-package-demo",
+  "homepage": "https://colorisjs.vercel.app",
   "bugs": {
-    "url": "https://github.com/mattpocock/tt-package-demo/issues"
+    "url": "https://github.com/lushiyun/coloris/issues"
   },
   "author": "Shiyun Lu <shiyunlu.hi@gmail.com> (https://shiyunlu.com)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mattpocock/tt-package-demo.git"
+    "url": "git+https://github.com/lushiyun/coloris.git"
   },
   "files": [
     "dist"
   ],
-  "type": "module"
+  "type": "module",
+  "license": "MIT",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.1",
+    "@changesets/cli": "^2.27.10",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "scripts": {
+    "build": "tsc",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "test": "vitest run",
+    "dev": "vitest",
+    "ci": "pnpm run build && pnpm run check-exports && pnpm run test",
+    "local-release": "changeset version && changeset publish",
+    "prepublishOnly": "pnpm run ci"
+  },
+  "main": "dist/index.js"
 }
