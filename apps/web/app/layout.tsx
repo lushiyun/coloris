@@ -26,7 +26,7 @@ export default function RootLayout({
 				enableSystem
 				disableTransitionOnChange
 			>
-				<body className={`${generalSans.variable} container p-6`}>
+				<body className={`${generalSans.variable} container mx-auto p-5`}>
 					{children}
 				</body>
 			</ThemeProvider>
