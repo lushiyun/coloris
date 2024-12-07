@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md,js,jsx,json}\""
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
