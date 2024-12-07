@@ -1,3 +1,9 @@
 export default function Home() {
-	return <div>Hello World</div>;
+	return (
+		<>
+			<header>
+				<h1 className="font-mono">coloris.js</h1>
+			</header>
+		</>
+	);
 }
