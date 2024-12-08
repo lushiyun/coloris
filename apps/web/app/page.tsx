@@ -1,3 +1,4 @@
+import { Accordion } from "@/components/core/accordian";
 import { Tooltip } from "@/components/core/tooltip";
 import { ColorPickers } from "@/components/features/color-pickers";
 import { ColorSwatches } from "@/components/features/color-swatches";
@@ -12,8 +13,6 @@ export default function Home() {
 		}),
 	);
 
-	console.log(cssVariables);
-
 	return (
 		<>
 			<style>{cssVariables}</style>
@@ -24,8 +23,9 @@ export default function Home() {
 				<ColorPickers />
 			</header>
 
-			<main className="grow">
+			<main className="grow flex">
 				<ColorSwatches />
+				<Accordion />
 			</main>
 		</>
 	);
