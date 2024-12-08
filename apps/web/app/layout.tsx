@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/styles/global.css";
-import { ThemeProvider } from "@/components/theme-provider";
 
 const generalSans = localFont({
 	src: "./fonts/GeneralSans.woff2",

@@ -6,21 +6,64 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@/components/core/popover";
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { Button } from "../core/button";
-import { generateColors } from "coloris-js";
+import { generateColors, generateCssVariables } from "coloris-js";
 import { useColorStore } from "@/lib/helpers/store";
 
 function ColorPickers() {
 	const { accent, background, setAccent, setBackground } = useColorStore();
 
-	const colors = generateColors({
-		appearance: "light",
-		accent,
-		background,
-	});
+	useEffect(() => {
+		const colors = generateColors({
+			appearance: "light",
+			accent,
+			background,
+		});
+		const root = document.documentElement;
 
-	console.log("colors", colors);
+		const supportsOKLCH = window.CSS && CSS.supports("color", "oklch(0% 0 0)");
+		const supportsP3 = window.CSS && CSS.supports("color", "p3(0 0 0)");
+
+		colors.accentScaleWideGamut.forEach((color, i) => {
+			root.style.setProperty(`--accent-${i + 1}`, color);
+		});
+
+		if (supportsOKLCH) {
+			colors.accentScaleWideGamut.forEach((color, i) => {
+				root.style.setProperty(`--accent-${i + 1}`, color);
+			});
+			colors.grayScaleWideGamut.forEach((color, i) => {
+				root.style.setProperty(`--neutral-${i + 1}`, color);
+			});
+			root.style.setProperty("--gray-surface", colors.graySurfaceWideGamut);
+			root.style.setProperty("--accent-surface", colors.accentSurfaceWideGamut);
+		} else if (supportsP3) {
+			colors.accentScaleAlphaWideGamut.forEach((color, i) => {
+				root.style.setProperty(`--accent-alpha-${i + 1}`, color);
+			});
+			colors.grayScaleAlphaWideGamut.forEach((color, i) => {
+				root.style.setProperty(`--neutral-alpha-${i + 1}`, color);
+			});
+		} else {
+			colors.accentScale.forEach((color, i) => {
+				root.style.setProperty(`--accent-${i + 1}`, color);
+			});
+			colors.accentScaleAlpha.forEach((color, i) => {
+				root.style.setProperty(`--accent-alpha-${i + 1}`, color);
+			});
+			colors.grayScale.forEach((color, i) => {
+				root.style.setProperty(`--neutral-${i + 1}`, color);
+			});
+			colors.grayScaleAlpha.forEach((color, i) => {
+				root.style.setProperty(`--neutral-alpha-${i + 1}`, color);
+			});
+			root.style.setProperty("--gray-surface", colors.graySurface);
+			root.style.setProperty("--accent-surface", colors.accentSurface);
+		}
+
+		root.style.setProperty("--background", colors.background);
+	}, [accent, background]);
 
 	return (
 		<div className="flex items-center gap-4">

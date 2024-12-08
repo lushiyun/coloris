@@ -1,0 +1,95 @@
+.accent:nth-of-type(1) {
+	background-color: var(--accent-1);
+}
+
+.accent:nth-of-type(2) {
+	background-color: var(--accent-2);
+}
+
+.accent:nth-of-type(3) {
+	background-color: var(--accent-3);
+}
+
+.accent:nth-of-type(4) {
+	background-color: var(--accent-4);
+}
+
+.accent:nth-of-type(5) {
+	background-color: var(--accent-5);
+}
+
+.accent:nth-of-type(6) {
+	background-color: var(--accent-6);
+}
+
+.accent:nth-of-type(7) {
+	background-color: var(--accent-7);
+}
+
+.accent:nth-of-type(8) {
+	background-color: var(--accent-8);
+}
+
+.accent:nth-of-type(9) {
+	background-color: var(--accent-9);
+}
+
+.accent:nth-of-type(10) {
+	background-color: var(--accent-10);
+}
+
+.accent:nth-of-type(11) {
+	background-color: var(--accent-11);
+}
+
+.accent:nth-of-type(12) {
+	background-color: var(--accent-12);
+}
+
+.neutral:nth-of-type(1) {
+	background-color: var(--neutral-1);
+}
+
+.neutral:nth-of-type(2) {
+	background-color: var(--neutral-2);
+}
+
+.neutral:nth-of-type(3) {
+	background-color: var(--neutral-3);
+}
+
+.neutral:nth-of-type(4) {
+	background-color: var(--neutral-4);
+}
+
+.neutral:nth-of-type(5) {
+	background-color: var(--neutral-5);
+}
+
+.neutral:nth-of-type(6) {
+	background-color: var(--neutral-6);
+}
+
+.neutral:nth-of-type(7) {
+	background-color: var(--neutral-7);
+}
+
+.neutral:nth-of-type(8) {
+	background-color: var(--neutral-8);
+}
+
+.neutral:nth-of-type(9) {
+	background-color: var(--neutral-9);
+}
+
+.neutral:nth-of-type(10) {
+	background-color: var(--neutral-10);
+}
+
+.neutral:nth-of-type(11) {
+	background-color: var(--neutral-11);
+}
+
+.neutral:nth-of-type(12) {
+	background-color: var(--neutral-12);
+}
