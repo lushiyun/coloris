@@ -12,7 +12,7 @@ export function BackgroundColorPicker() {
 			<Button variant="secondary">
 				<span>Background</span>
 				<span
-					className="size-5 rounded-full"
+					className="size-5 rounded-full ring-4 ring-offset-0 ring-white"
 					style={{ backgroundColor: color }}
 				/>
 			</Button>

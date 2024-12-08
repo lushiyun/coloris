@@ -3,29 +3,37 @@
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { cn } from "@/lib/helpers/cn";
 
-const TooltipProvider = TooltipPrimitive.Provider;
+type TooltipProps = TooltipPrimitive.TooltipContentProps & {
+	content: string;
+	className?: string;
+};
 
-const Tooltip = TooltipPrimitive.Root;
-
-const TooltipTrigger = TooltipPrimitive.Trigger;
-
-function TooltipContent({
+export function Tooltip({
+	children,
+	content,
 	className,
 	collisionPadding = 5,
 	sideOffset = 4,
 	...props
-}: TooltipPrimitive.TooltipContentProps) {
+}: TooltipProps) {
 	return (
-		<TooltipPrimitive.Content
-			collisionPadding={collisionPadding}
-			sideOffset={sideOffset}
-			className={cn(
-				"bg-inversed text-fg-inversed animate-in fade-in-0 zoom-in-95 shadow-dropdown z-50 overflow-hidden rounded-lg px-3 py-1.5 text-xs",
-				className,
-			)}
-			{...props}
-		/>
+		<TooltipPrimitive.Provider delayDuration={100}>
+			<TooltipPrimitive.Root>
+				<TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
+				<TooltipPrimitive.Portal>
+					<TooltipPrimitive.Content
+						className={cn(
+							"bg-inversed text-fg-inversed shadow-dropdown z-50 overflow-hidden rounded-lg px-3 py-1.5 text-xs max-w-[40ch]",
+							className,
+						)}
+						collisionPadding={collisionPadding}
+						sideOffset={sideOffset}
+						{...props}
+					>
+						{content}
+					</TooltipPrimitive.Content>
+				</TooltipPrimitive.Portal>
+			</TooltipPrimitive.Root>
+		</TooltipPrimitive.Provider>
 	);
 }
-
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

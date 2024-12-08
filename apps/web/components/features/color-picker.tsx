@@ -5,7 +5,7 @@ import {
 	PopoverTrigger,
 } from "@/components/core/popover";
 import type { ReactNode } from "react";
-import { Input } from "../core/input";
+import { Input } from "@/components/core/input";
 
 export function ColorPicker({
 	children,
@@ -19,13 +19,15 @@ export function ColorPicker({
 	return (
 		<Popover>
 			<PopoverTrigger asChild>{children}</PopoverTrigger>
-			<PopoverContent className="flex flex-col gap-4">
-				<HexColorPicker color={color} onChange={onChange} />
-				<Input
-					value={color}
-					onChange={(e) => onChange(e.target.value)}
-					placeholder={color}
-				/>
+			<PopoverContent>
+				<div className="w-full flex flex-col gap-4 items-center">
+					<HexColorPicker color={color} onChange={onChange} />
+					<Input
+						value={color}
+						onChange={(e) => onChange(e.target.value)}
+						placeholder={color}
+					/>
+				</div>
 			</PopoverContent>
 		</Popover>
 	);
