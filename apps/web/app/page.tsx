@@ -1,20 +1,32 @@
 import { Tooltip } from "@/components/core/tooltip";
-import { AccentColorPicker } from "@/components/features/accent-color-picker";
-import { BackgroundColorPicker } from "@/components/features/background-color-picker";
+import { ColorPickers } from "@/components/features/color-pickers";
+import { ColorSwatches } from "@/components/features/color-swatches";
+import { generateColors, generateCssVariables } from "coloris-js";
 
 export default function Home() {
+	const cssVariables = generateCssVariables(
+		generateColors({
+			appearance: "light",
+			accent: "#000000",
+			background: "#ffffff",
+		}),
+	);
+
+	console.log(cssVariables);
+
 	return (
 		<>
+			<style>{cssVariables}</style>
 			<header className="flex items-center justify-between">
 				<Tooltip content="Programmatic color palette generator">
 					<h1 className="font-mono text-3xl">coloris.js</h1>
 				</Tooltip>
-
-				<div className="flex items-center gap-4">
-					<AccentColorPicker />
-					<BackgroundColorPicker />
-				</div>
+				<ColorPickers />
 			</header>
+
+			<main className="grow">
+				<ColorSwatches />
+			</main>
 		</>
 	);
 }

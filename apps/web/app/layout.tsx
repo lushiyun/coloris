@@ -20,16 +20,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<ThemeProvider
-				attribute="class"
-				defaultTheme="system"
-				enableSystem
-				disableTransitionOnChange
+			<body
+				className={`${generalSans.variable} container mx-auto p-5 flex flex-col h-screen gap-y-5`}
 			>
-				<body className={`${generalSans.variable} container mx-auto p-5`}>
-					{children}
-				</body>
-			</ThemeProvider>
+				{children}
+			</body>
 		</html>
 	);
 }

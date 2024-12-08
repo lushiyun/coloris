@@ -1,103 +1,30 @@
 // @ts-nocheck
 
-import * as RadixColors from "@radix-ui/colors";
 import Color from "colorjs.io";
 import BezierEasing from "bezier-easing";
+import type { ArrayOf12, GeneratedColors } from "./types.js";
+import {
+	arrayOf12,
+	scaleNames,
+	grayScaleNames,
+	lightColors,
+	darkColors,
+	lightGrayColors,
+	darkGrayColors,
+} from "./constants.js";
 
-type ArrayOf12<T> = [T, T, T, T, T, T, T, T, T, T, T, T];
-const arrayOf12 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
-
-const grayScaleNames = [
-	"gray",
-	"mauve",
-	"slate",
-	"sage",
-	"olive",
-	"sand",
-] as const;
-
-const scaleNames = [
-	...grayScaleNames,
-	"tomato",
-	"red",
-	"ruby",
-	"crimson",
-	"pink",
-	"plum",
-	"purple",
-	"violet",
-	"iris",
-	"indigo",
-	"blue",
-	"cyan",
-	"teal",
-	"jade",
-	"green",
-	"grass",
-	"brown",
-	"orange",
-	"sky",
-	"mint",
-	"lime",
-	"yellow",
-	"amber",
-] as const;
-
-const lightColors = Object.fromEntries(
-	scaleNames.map((scaleName) => [
-		scaleName,
-		Object.values(RadixColors[`${scaleName}P3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
-	]),
-) as Record<(typeof scaleNames)[number], ArrayOf12<Color>>;
-
-const darkColors = Object.fromEntries(
-	scaleNames.map((scaleName) => [
-		scaleName,
-		Object.values(RadixColors[`${scaleName}DarkP3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
-	]),
-) as Record<(typeof scaleNames)[number], ArrayOf12<Color>>;
-
-const lightGrayColors = Object.fromEntries(
-	grayScaleNames.map((scaleName) => [
-		scaleName,
-		Object.values(RadixColors[`${scaleName}P3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
-	]),
-) as Record<(typeof grayScaleNames)[number], ArrayOf12<Color>>;
-
-const darkGrayColors = Object.fromEntries(
-	grayScaleNames.map((scaleName) => [
-		scaleName,
-		Object.values(RadixColors[`${scaleName}DarkP3`]).map((str) =>
-			new Color(str).to("oklch"),
-		),
-	]),
-) as Record<(typeof grayScaleNames)[number], ArrayOf12<Color>>;
-
-export const generateRadixColors = ({
+function generateColors({
 	appearance,
 	...args
 }: {
 	appearance: "light" | "dark";
 	accent: string;
-	gray: string;
 	background: string;
-}) => {
+}): GeneratedColors {
 	const allScales = appearance === "light" ? lightColors : darkColors;
 	const grayScales = appearance === "light" ? lightGrayColors : darkGrayColors;
 	const backgroundColor = new Color(args.background).to("oklch");
-
-	const grayBaseColor = new Color(args.gray).to("oklch");
-	const grayScaleColors = getScaleFromColor(
-		grayBaseColor,
-		grayScales,
-		backgroundColor,
-	);
+	const grayScaleColors = grayScales.sand;
 
 	const accentBaseColor = new Color(args.accent).to("oklch");
 
@@ -205,7 +132,7 @@ export const generateRadixColors = ({
 
 		background: backgroundHex,
 	};
-};
+}
 
 function getStep9Colors(
 	scale: ArrayOf12<Color>,
@@ -280,7 +207,7 @@ function getScaleFromColor(
 	const allAreGrays = closestColors.every((color) =>
 		grayScaleNamesStr.includes(color.scale),
 	);
-	if (!allAreGrays && grayScaleNamesStr.includes(closestColors?.[0]?.scale)) {
+	if (!allAreGrays && grayScaleNamesStr.includes(closestColors[0].scale)) {
 		while (
 			closestColors[1] &&
 			grayScaleNamesStr.includes(closestColors[1].scale)
@@ -680,3 +607,5 @@ function toOklchString(color: Color) {
 		.toString({ precision: 4 })
 		.replace(/(\S+)(.+)/, `oklch(${L}%$2`);
 }
+
+export { generateColors };
