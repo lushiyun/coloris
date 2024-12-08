@@ -10,7 +10,7 @@ export function ColorSwatches() {
 					<button
 						type="button"
 						key={number}
-						className={`block size-12 cursor-pointer transition ease-fluid hover:ring-2 hover:ring-offset-0 hover:ring-[var(--accent-8)] ${styles.accent}`}
+						className={`block rounded-xl size-12 cursor-pointer transition ease-fluid hover:ring-2 hover:ring-offset-0 hover:ring-[var(--accent-8)] active:scale-95 transition-transform ${styles.accent}`}
 					/>
 				))}
 			</ul>
@@ -20,7 +20,7 @@ export function ColorSwatches() {
 					<button
 						type="button"
 						key={number}
-						className={`block size-12 cursor-pointer transition ease-fluid hover:ring-2 hover:ring-offset-0 hover:ring-[var(--neutral-8)] ${styles.neutral}`}
+						className={`block rounded-xl size-12 cursor-pointer transition ease-fluid hover:ring-2 hover:ring-offset-0 hover:ring-[var(--neutral-8)] active:scale-95 transition-transform ${styles.neutral}`}
 					/>
 				))}
 			</ul>
