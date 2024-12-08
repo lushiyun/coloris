@@ -12,67 +12,67 @@ const SelectValue = SelectPrimitive.Value;
 const SelectTrigger = SelectPrimitive.Trigger;
 
 function SelectContent({
-	className,
-	children,
-	collisionPadding = 5,
-	sideOffset = 5,
-	...props
+  className,
+  children,
+  collisionPadding = 5,
+  sideOffset = 5,
+  ...props
 }: SelectPrimitive.SelectContentProps) {
-	return (
-		<SelectPrimitive.Portal>
-			<SelectPrimitive.Content
-				className={cn(
-					"z-50 rounded-2xl bg-primary text-fg-primary shadow-[0_3px_12px_0_rgb(0_0_0_/_0.15)] outline-none",
-					className,
-				)}
-				collisionPadding={collisionPadding}
-				sideOffset={sideOffset}
-				{...props}
-			>
-				<SelectPrimitive.Viewport className="p-2">
-					{children}
-				</SelectPrimitive.Viewport>
-			</SelectPrimitive.Content>
-		</SelectPrimitive.Portal>
-	);
+  return (
+    <SelectPrimitive.Portal>
+      <SelectPrimitive.Content
+        className={cn(
+          "bg-primary text-fg-primary z-50 rounded-2xl shadow-[0_3px_12px_0_rgb(0_0_0_/_0.15)] outline-none",
+          className,
+        )}
+        collisionPadding={collisionPadding}
+        sideOffset={sideOffset}
+        {...props}
+      >
+        <SelectPrimitive.Viewport className="p-2">
+          {children}
+        </SelectPrimitive.Viewport>
+      </SelectPrimitive.Content>
+    </SelectPrimitive.Portal>
+  );
 }
 
 function SelectItem({
-	className,
-	children,
-	...props
+  className,
+  children,
+  ...props
 }: SelectPrimitive.SelectItemProps) {
-	return (
-		<SelectPrimitive.Item
-			className={cn(
-				"flex w-full cursor-default select-none items-center rounded-sm py-1.5 px-2 text-sm outline-none focus:bg-secondary data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-				className,
-			)}
-			{...props}
-		>
-			{children}
-		</SelectPrimitive.Item>
-	);
+  return (
+    <SelectPrimitive.Item
+      className={cn(
+        "focus:bg-secondary flex w-full cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </SelectPrimitive.Item>
+  );
 }
 
 function SelectSeparator({
-	className,
-	...props
+  className,
+  ...props
 }: SelectPrimitive.SelectSeparatorProps) {
-	return (
-		<SelectPrimitive.Separator
-			className={cn("-mx-1 my-1 h-px bg-divider-primary", className)}
-			{...props}
-		/>
-	);
+  return (
+    <SelectPrimitive.Separator
+      className={cn("bg-divider-primary -mx-1 my-1 h-px", className)}
+      {...props}
+    />
+  );
 }
 
 export {
-	Select,
-	SelectGroup,
-	SelectValue,
-	SelectTrigger,
-	SelectContent,
-	SelectItem,
-	SelectSeparator,
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectSeparator,
 };
