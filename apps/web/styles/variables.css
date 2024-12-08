@@ -1,0 +1,68 @@
+:root {
+	--fg-primary: var(--color-black);
+	--fg-secondary: var(--color-neutral-600);
+	--fg-tertiary: var(--color-neutral-400);
+	--fg-inversed: var(--color-white);
+	--fg-disabled: var(--color-neutral-500);
+	--fg-link: var(--color-black);
+	--fg-link-hover: var(--color-black);
+	--fg-link-press: var(--color-black);
+
+	--fg-positive: var(--color-green-200);
+	--fg-alert: var(--color-yellow-200);
+	--fg-negative: var(--color-red-200);
+
+	--primary: var(--color-white);
+	--secondary: var(--color-neutral-100);
+	--tertiary: var(--color-neutral-200);
+	--quarternary: var(--color-neutral-300);
+	--inversed: var(--color-black);
+	--disabled: var(--color-neutral-100);
+	--hover: var(--color-neutral-900);
+
+	--positive: var(--color-green-200);
+	--alert: var(--color-yellow-200);
+	--negative: var(--color-red-200);
+
+	--divider-primary: var(--color-neutral-200);
+	--divider-secondary: var(--color-neutral-300);
+	--border-primary: var(--color-neutral-300);
+
+	--shadow-image-inset: inset 0 0 0 0.5px #0000001a;
+	--shadow-logo-inset: inset 0 0 0 0.5px #0000000d;
+	--shadow-dropdown: 0 3px 12px 0 rgb(0 0 0 / 0.15);
+}
+
+.dark {
+	--fg-primary: var(--color-white);
+	--fg-secondary: var(--color-neutral-400);
+	--fg-tertiary: var(--color-neutral-500);
+	--fg-inversed: var(--color-black);
+	--fg-disabled: var(--color-neutral-500) / 40%;
+	--fg-link: var(--color-neutral-200);
+	--fg-link-hover: var(--color-neutral-200);
+	--fg-link-press: var(--color-neutral-200);
+
+	--fg-positive: var(--color-green-200);
+	--fg-alert: var(--color-yellow-200);
+	--fg-negative: var(--color-red-200);
+
+	--primary: var(--color-black);
+	--secondary: var(--color-neutral-900);
+	--tertiary: var(--color-neutral-800);
+	--quarternary: var(--color-neutral-700);
+	--inversed: var(--color-neutral-100);
+	--disabled: var(--color-neutral-400);
+	--hover: var(--color-neutral-400);
+	--positive: var(--color-green-200);
+	--alert: var(--color-yellow-200);
+	--negative: var(--color-red-200);
+
+	--divider-primary: var(--color-neutral-900);
+	--divider-secondary: var(--color-neutral-800);
+	--border-primary: var(--color-neutral-800);
+
+	--shadow-image-inset: inset 0 0 0 0.5px #ffffff29;
+	--shadow-logo-inset: inset 0 0 0 0.5px #ffffff29;
+	--shadow-dropdown: 0 8px 24px #0000007a;
+}

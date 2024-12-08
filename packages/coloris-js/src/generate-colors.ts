@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import * as RadixColors from "@radix-ui/colors";
 import Color from "colorjs.io";
 import BezierEasing from "bezier-easing";
@@ -5,7 +7,6 @@ import BezierEasing from "bezier-easing";
 type ArrayOf12<T> = [T, T, T, T, T, T, T, T, T, T, T, T];
 const arrayOf12 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] as const;
 
-// prettier-ignore
 const grayScaleNames = [
 	"gray",
 	"mauve",
@@ -15,7 +16,6 @@ const grayScaleNames = [
 	"sand",
 ] as const;
 
-// prettier-ignore
 const scaleNames = [
 	...grayScaleNames,
 	"tomato",
@@ -291,11 +291,11 @@ function getScaleFromColor(
 
 	// Ensure we have at least two colors
 	if (closestColors.length < 2) {
-		return scales[closestColors[0]!.scale];
+		return scales[closestColors[0].scale];
 	}
 
-	const colorA = closestColors[0]!;
-	const colorB = closestColors[1]!;
+	const colorA = closestColors[0];
+	const colorB = closestColors[1];
 
 	// Light trigonometry ahead.
 	//
@@ -504,9 +504,9 @@ function getAlphaColor(
 	}
 
 	const clampRgb = (n: number) =>
-		isNaN(n) ? 0 : Math.min(rgbPrecision, Math.max(0, n));
+		Number.isNaN(n) ? 0 : Math.min(rgbPrecision, Math.max(0, n));
 	const clampA = (n: number) =>
-		isNaN(n) ? 0 : Math.min(alphaPrecision, Math.max(0, n));
+		Number.isNaN(n) ? 0 : Math.min(alphaPrecision, Math.max(0, n));
 	const maxAlpha = targetAlpha ?? Math.max(alphaR, alphaG, alphaB);
 
 	const A = clampA(Math.ceil(maxAlpha * alphaPrecision)) / alphaPrecision;
