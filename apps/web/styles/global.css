@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import "./variables.css" layer(theme);
 
 @variant dark (&:where(.dark, .dark *));

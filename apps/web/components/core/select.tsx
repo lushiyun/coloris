@@ -16,6 +16,7 @@ function SelectContent({
   children,
   collisionPadding = 5,
   sideOffset = 5,
+  position = "popper",
   ...props
 }: SelectPrimitive.SelectContentProps) {
   return (
@@ -27,6 +28,7 @@ function SelectContent({
         )}
         collisionPadding={collisionPadding}
         sideOffset={sideOffset}
+        position={position}
         {...props}
       >
         <SelectPrimitive.Viewport className="p-2">

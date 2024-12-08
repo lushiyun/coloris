@@ -2,7 +2,7 @@ import { Tooltip } from "./core/tooltip";
 
 export function Footer() {
   return (
-    <footer className="text-fg-secondary flex items-center justify-end gap-x-4 pt-4">
+    <footer className="text-fg-secondary flex items-center justify-end gap-x-4 py-6">
       <Tooltip content="Download npm package">
         <a
           href="http://shiyunlu.com"

@@ -35,12 +35,12 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={`${generalSans.variable} container mx-auto flex min-h-screen flex-col p-6`}
+          className={`${generalSans.variable} container mx-auto flex min-h-screen flex-col px-6`}
         >
           <style global={true}>{cssVariables}</style>
           <Header />
           <main className="flex grow gap-x-6">
-            <div className="sticky top-0 flex w-45 justify-center">
+            <div className="sticky top-14 flex h-fit w-45 justify-center">
               <ColorSwatches />
             </div>
             {children}

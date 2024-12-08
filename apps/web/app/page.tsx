@@ -1,49 +1,42 @@
+import { NavCard } from "@/components/nav-card";
 import { Brackets, Ellipsis, StickyNote, SwatchBook } from "lucide-react";
-import { Link } from "next-view-transitions";
 
 export default function Home() {
   return (
-    <div className="grid h-full w-full grid-cols-2 gap-6">
-      <Link
-        className="border-divider-primary block rounded-2xl border p-6 transition-transform ease-in hover:scale-[0.99]"
-        href="/tokens"
-      >
-        <div className="flex items-center gap-x-4">
-          <span className="border-divider-primary inline-flex size-12 items-center justify-center rounded-full border">
-            <Brackets />
-          </span>
-          <span className="text-xl font-medium">Tokens</span>
-        </div>
+    <div className="grid h-full w-full grid-cols-1 gap-4 sm:grid-cols-2">
+      <NavCard href="/tokens" icon={<Brackets />} title="Tokens">
+        <p className="text-fg-secondary text-sm">
+          Primative CSS variables generated from your accent and background
+          colors based on{" "}
+          <a
+            href="https://www.radix-ui.com/colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Radix Colors
+          </a>
+          . For p3 color gamut and their fallbacks.
+        </p>
+      </NavCard>
 
-        <p className="text-fg-secondary text-sm">Manage your color tokens.</p>
-      </Link>
+      <NavCard href="/samples" icon={<SwatchBook />} title="Samples">
+        <p className="text-fg-secondary text-sm">
+          Sample components styled with the generated color palettes, including
+          semantic variables.
+        </p>
+      </NavCard>
 
-      <Link
-        className="border-divider-primary block rounded-2xl border p-6 transition-transform ease-in hover:scale-[0.99]"
-        href="/tokens"
-      >
-        <span className="border-divider-primary inline-flex size-12 items-center justify-center rounded-full border">
-          <SwatchBook />
-        </span>
-      </Link>
+      <NavCard href="/docs" icon={<StickyNote />} title="Docs">
+        <p className="text-fg-secondary text-sm">
+          How to use coloris.js in different types of projects: multi-tenanet
+          platforms with a global design system, one-off token generation, adopt
+          only primative CSS variables, or take the opinionated semantics.
+        </p>
+      </NavCard>
 
-      <Link
-        className="border-divider-primary block rounded-2xl border p-6 transition-transform ease-in hover:scale-[0.99]"
-        href="/tokens"
-      >
-        <span className="border-divider-primary inline-flex size-12 items-center justify-center rounded-full border">
-          <StickyNote />
-        </span>
-      </Link>
-
-      <Link
-        className="border-divider-primary block rounded-2xl border p-6 transition-transform ease-in hover:scale-[0.99]"
-        href="/tokens"
-      >
-        <span className="border-divider-primary inline-flex size-12 items-center justify-center rounded-full border">
-          <Ellipsis />
-        </span>
-      </Link>
+      <NavCard href="/collection" icon={<Ellipsis />} title="Collection">
+        <p className="text-fg-secondary text-sm"></p>
+      </NavCard>
     </div>
   );
 }

@@ -29,12 +29,12 @@
     "vitest": "^2.1.8"
   },
   "scripts": {
+    "dev": "tsc --watch",
     "build": "tsc",
     "format": "prettier --write .",
     "check-format": "prettier --check .",
     "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
     "test": "vitest run",
-    "dev": "vitest",
     "ci": "pnpm run build && pnpm run check-format && pnpm run check-exports && pnpm run test",
     "local-release": "changeset version && changeset publish",
     "prepublishOnly": "pnpm run ci"
