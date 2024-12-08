@@ -26,6 +26,7 @@ function ColorPickers() {
       appearance: "light",
       accent,
       background,
+      neutral: "sand",
     });
     const root = document.documentElement;
 
@@ -43,23 +44,23 @@ function ColorPickers() {
       root.style.setProperty("--accent-surface", colors.accentSurfaceWideGamut);
     } else if (supportsP3) {
       colors.accentScaleAlphaWideGamut.forEach((color, i) => {
-        root.style.setProperty(`--accent-alpha-${i + 1}`, color);
+        root.style.setProperty(`--accent-a${i + 1}`, color);
       });
       colors.grayScaleAlphaWideGamut.forEach((color, i) => {
-        root.style.setProperty(`--neutral-alpha-${i + 1}`, color);
+        root.style.setProperty(`--neutral-a${i + 1}`, color);
       });
     } else {
       colors.accentScale.forEach((color, i) => {
         root.style.setProperty(`--accent-${i + 1}`, color);
       });
       colors.accentScaleAlpha.forEach((color, i) => {
-        root.style.setProperty(`--accent-alpha-${i + 1}`, color);
+        root.style.setProperty(`--accent-a${i + 1}`, color);
       });
       colors.grayScale.forEach((color, i) => {
         root.style.setProperty(`--neutral-${i + 1}`, color);
       });
       colors.grayScaleAlpha.forEach((color, i) => {
-        root.style.setProperty(`--neutral-alpha-${i + 1}`, color);
+        root.style.setProperty(`--neutral-a${i + 1}`, color);
       });
       root.style.setProperty("--neutral-surface", colors.graySurface);
       root.style.setProperty("--accent-surface", colors.accentSurface);
@@ -133,7 +134,7 @@ function ColorPicker({
           <HexColorInput
             color={color}
             onChange={onChange}
-            className="border-divider-primary bg-primary ring-offset-background placeholder:text-fg-secondary focus-visible:ring-fg-primary flex h-10 w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            className="border-border bg-bg placeholder:text-fg-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
           />
         </div>
       </PopoverContent>
@@ -144,7 +145,7 @@ function ColorPicker({
 function ColorSwatch({ color }: { color: string }) {
   return (
     <span
-      className="border-divider-primary size-5 rounded-full border ring-4 ring-white ring-offset-0"
+      className="border-border size-5 rounded-full border ring-4 ring-white ring-offset-0"
       style={{ backgroundColor: color }}
     />
   );

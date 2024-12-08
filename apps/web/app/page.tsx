@@ -1,42 +1,117 @@
-import { NavCard } from "@/components/nav-card";
-import { Brackets, Ellipsis, StickyNote, SwatchBook } from "lucide-react";
+import { CssVariables } from "@/components/features/css-variables";
+import { SemanticVariables } from "@/components/features/semantic-variables";
 
 export default function Home() {
   return (
-    <div className="grid h-full w-full grid-cols-1 gap-4 sm:grid-cols-2">
-      <NavCard href="/tokens" icon={<Brackets />} title="Tokens">
-        <p className="text-fg-secondary text-sm">
-          Primative CSS variables generated from your accent and background
-          colors based on{" "}
-          <a
-            href="https://www.radix-ui.com/colors"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Radix Colors
-          </a>
-          . For p3 color gamut and their fallbacks.
-        </p>
-      </NavCard>
+    <article className="prose prose-pre:bg-secondary prose-pre:text-fg-secondary prose-pre:rounded-2xl prose-code:text-xs prose-a:text-[var(--accent-11)] prose-a:no-underline prose-a:hover:text-[var(--accent-12)] prose-a:font-normal mx-auto">
+      <p>
+        coloris.js generates primative CSS variables from your accent and
+        background colors based on{" "}
+        <a
+          href="https://www.radix-ui.com/colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Radix Colors
+        </a>{" "}
+        .
+      </p>
 
-      <NavCard href="/samples" icon={<SwatchBook />} title="Samples">
-        <p className="text-fg-secondary text-sm">
-          Sample components styled with the generated color palettes, including
-          semantic variables.
-        </p>
-      </NavCard>
+      <CssVariables />
 
-      <NavCard href="/docs" icon={<StickyNote />} title="Docs">
-        <p className="text-fg-secondary text-sm">
-          How to use coloris.js in different types of projects: multi-tenanet
-          platforms with a global design system, one-off token generation, adopt
-          only primative CSS variables, or take the opinionated semantics.
-        </p>
-      </NavCard>
+      <p>
+        Using these variables, you can create your own sematic color system. For
+        example, for{" "}
+        <a
+          href="https://ui.shadcn.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          shadcn/ui
+        </a>
+        :
+      </p>
+      <SemanticVariables />
 
-      <NavCard href="/collection" icon={<Ellipsis />} title="Collection">
-        <p className="text-fg-secondary text-sm"></p>
-      </NavCard>
-    </div>
+      <p>Use it as an one-off or programmatic color palette generator.</p>
+
+      <h2>One-off projects</h2>
+
+      <p>
+        Use the web app to generate primative CSS variables for your accent and
+        background colors. Copy the code and remove the variables you don&apos;t
+        need.
+      </p>
+
+      <h2>Multi-theme platform with global design system</h2>
+
+      <p>
+        Install the{" "}
+        <a href="https://www.npmjs.com/package/coloris-js">coloris-js</a>{" "}
+        package.
+      </p>
+
+      <pre>
+        <code>npm install coloris-js</code>
+      </pre>
+
+      <p>
+        Generate CSS variables.
+      </p>
+
+      <pre>
+        <code>
+{
+`import { coloris } from "coloris-js";
+
+const colors = coloris({
+  appearance: "light",
+  accent: "#BCFB46",
+  background: "#ffffff",
+  neutral: "sand",
+});`
+}
+        </code>
+      </pre>
+
+			<p>
+        Use in server rendered components.
+      </p>
+
+			<pre>
+				<code>
+{
+`import { coloris } from "coloris-js";
+
+export default async function Layout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { id: string };
+}) {
+  const { id } = params;
+  const theme = await getTheme(id);
+  const { accent, background, neutral } = theme;
+
+  const colors = coloris({
+    appearance: "light",
+    accent,
+    background,
+    neutral,
+  });
+
+  return (
+    <>
+      <style>{colors}</style>
+      {children}
+    </>
+  );
+}
+`
+}
+        </code>
+      </pre>
+    </article>
   );
 }

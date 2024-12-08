@@ -23,7 +23,7 @@ function PopoverContent({
         sideOffset={sideOffset}
         collisionPadding={collisionPadding}
         className={cn(
-          "bg-primary text-fg-primary z-50 rounded-2xl p-4 shadow-[0_3px_12px_0_rgb(0_0_0_/_0.15)] outline-none",
+          "bg-bg text-fg z-50 rounded-2xl p-4 shadow-[0_3px_12px_0_rgb(0_0_0_/_0.15)] outline-none",
           className,
         )}
         {...props}

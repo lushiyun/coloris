@@ -15,9 +15,9 @@ export function NavCard({
 }) {
   return (
     <Link href={href}>
-      <div className="border-divider-primary flex size-full flex-col gap-y-8 rounded-2xl border p-6 transition-transform ease-in hover:scale-[0.99]">
+      <div className="border-border flex size-full flex-col gap-y-8 rounded-2xl border p-6 transition-transform ease-in hover:scale-[0.99]">
         <div className="flex flex-shrink-0 items-center gap-x-4">
-          <span className="border-divider-primary inline-flex size-12 items-center justify-center rounded-full border">
+          <span className="border-border inline-flex size-12 items-center justify-center rounded-full border">
             {icon}
           </span>
           <h2 className="text-xl font-medium">{title}</h2>

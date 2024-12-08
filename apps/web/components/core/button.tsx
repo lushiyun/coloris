@@ -3,18 +3,19 @@ import { cn } from "@/lib/helpers/cn";
 import type { ButtonHTMLAttributes } from "react";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-base font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg-primary focus-visible:ring-offset-0 disabled:pointer-events-none disabled:bg-disabled disabled:text-fg-disabled [&_svg]:shrink-0 [&_svg]:stroke-2 cursor-pointer active:scale-95",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-base font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-0 disabled:pointer-events-none disabled:bg-disabled disabled:text-fg-disabled [&_svg]:shrink-0 [&_svg]:stroke-2 cursor-pointer active:scale-95",
   {
     variants: {
       variant: {
-        default: "bg-inversed text-fg-inversed hover:bg-hover",
+        default: "bg-primary text-fg-primary hover:bg-primary-hover",
         outline:
-          "border border-border-primary bg-transparent text-fg-primary hover:bg-secondary bg-primary",
-        secondary: "bg-tertiary text-fg-primary hover:bg-quarternary",
+          "border border-border bg-transparent text-fg hover:bg-outline-hover bg-bg",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary-hover",
         ghost: "hover:bg-secondary",
         link: "text-fg-primary underline-offset-4 hover:underline",
         destructive:
-          "border border-border-primary bg-transparent text-fg-negative hover:bg-secondary",
+          "border border-border bg-transparent text-fg-negative hover:bg-secondary",
       },
       size: {
         default: "h-11 px-4",

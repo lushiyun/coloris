@@ -63,7 +63,7 @@ function SelectSeparator({
 }: SelectPrimitive.SelectSeparatorProps) {
   return (
     <SelectPrimitive.Separator
-      className={cn("bg-divider-primary -mx-1 my-1 h-px", className)}
+      className={cn("bg-border -mx-1 my-1 h-px", className)}
       {...props}
     />
   );

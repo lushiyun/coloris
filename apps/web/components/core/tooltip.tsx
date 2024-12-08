@@ -23,7 +23,7 @@ export function Tooltip({
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
             className={cn(
-              "bg-inversed text-fg-inversed shadow-dropdown z-50 max-w-[40ch] overflow-hidden rounded-lg px-3 py-1.5 text-xs",
+              "bg-bg-inversed text-fg-inversed shadow-dropdown z-50 max-w-[40ch] overflow-hidden rounded-lg px-3 py-1.5 text-xs",
               className,
             )}
             collisionPadding={collisionPadding}

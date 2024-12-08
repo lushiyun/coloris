@@ -6,41 +6,41 @@
 @import "@radix-ui/colors/sand.css";
 
 :root {
-  --fg-primary: var(--color-black);
-  --fg-secondary: var(--color-neutral-600);
-  --fg-tertiary: var(--color-neutral-400);
-  --fg-inversed: var(--color-white);
-  --fg-disabled: var(--color-neutral-500);
-  --fg-link: var(--color-black);
-  --fg-link-hover: var(--color-black);
-  --fg-link-press: var(--color-black);
+  --fg: var(--neutral-12);
+  --bg: var(--background);
 
-  --fg-positive: var(--color-green-200);
-  --fg-alert: var(--color-yellow-200);
-  --fg-negative: var(--color-red-200);
+  --bg-inversed: var(--neutral-12);
+  --fg-inversed: var(--background);
 
-  --primary: var(--color-white);
-  --secondary: var(--color-neutral-100);
-  --tertiary: var(--color-neutral-200);
-  --quarternary: var(--color-neutral-300);
-  --inversed: var(--color-black);
-  --disabled: var(--color-neutral-100);
-  --hover: var(--color-neutral-900);
+  --muted: var(--neutral-a4);
+  --muted-foreground: var(--neutral-a7);
+
+  --primary: var(--accent-9);
+  --fg-primary: var(--accent-contrast);
+  --primary-hover: var(--accent-10);
+
+  --secondary: var(--neutral-3);
+  --fg-secondary: var(--neutral-12);
+  --secondary-hover: var(--neutral-4);
+
+  --outline-hover: var(--neutral-3);
+
+  --border: var(--neutral-7);
+  --ring: var(--neutral-12);
+
+  --disabled: var(--neutral-a4);
+  --fg-disabled: var(--neutral-a7);
+
+  --fg-positive: var(--color-green-500);
+  --fg-alert: var(--color-yellow-500);
+  --fg-negative: var(--color-red-500);
 
   --positive: var(--color-green-200);
   --alert: var(--color-yellow-200);
   --negative: var(--color-red-200);
-
-  --divider-primary: var(--color-neutral-200);
-  --divider-secondary: var(--color-neutral-300);
-  --border-primary: var(--color-neutral-300);
-
-  --shadow-image-inset: inset 0 0 0 0.5px #0000001a;
-  --shadow-logo-inset: inset 0 0 0 0.5px #0000000d;
-  --shadow-dropdown: 0 3px 12px 0 rgb(0 0 0 / 0.15);
 }
 
-.dark {
+/* .dark {
   --fg-primary: var(--color-white);
   --fg-secondary: var(--color-neutral-400);
   --fg-tertiary: var(--color-neutral-500);
@@ -72,4 +72,4 @@
   --shadow-image-inset: inset 0 0 0 0.5px #ffffff29;
   --shadow-logo-inset: inset 0 0 0 0.5px #ffffff29;
   --shadow-dropdown: 0 8px 24px #0000007a;
-}
+} */

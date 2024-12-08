@@ -5,38 +5,35 @@
 @variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-fg-primary: var(--fg-primary);
-  --color-fg-secondary: var(--fg-secondary);
-  --color-fg-tertiary: var(--fg-tertiary);
-  --color-fg-inversed: var(--fg-inversed);
-  --color-fg-disabled: var(--fg-disabled);
-  --color-fg-link: var(--fg-link);
-  --color-fg-link-hover: var(--fg-link-hover);
-  --color-fg-link-press: var(--fg-link-press);
+  --color-fg: var(--fg-fg);
+  --color-bg: var(--bg);
 
-  --color-fg-positive: var(--fg-positive);
-  --color-fg-alert: var(--fg-alert);
-  --color-fg-negative: var(--fg-negative);
+  --color-bg-inversed: var(--bg-inversed);
+  --color-fg-inversed: var(--fg-inversed);
 
   --color-primary: var(--primary);
+  --color-fg-primary: var(--fg-primary);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
-  --color-tertiary: var(--tertiary);
-  --color-quarternary: var(--quarternary);
-  --color-inversed: var(--inversed);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-secondary-hover: var(--secondary-hover);
+
+  --color-outline-hover: var(--outline-hover);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+
   --color-disabled: var(--disabled);
-  --color-hover: var(--hover);
+  --color-fg-disabled: var(--fg-disabled);
 
-  --color-positive: var(--color-green-200);
+  --color-positive: var(--positive);
+  --color-fg-positive: var(--fg-positive);
+
   --color-alert: var(--alert);
+  --color-fg-alert: var(--fg-alert);
+
   --color-negative: var(--negative);
-
-  --color-divider-primary: var(--divider-primary);
-  --color-divider-secondary: var(--divider-secondary);
-  --color-border-primary: var(--border-primary);
-
-  --shadow-image-inset: var(--shadow-image-inset);
-  --shadow-logo-inset: var(--shadow-logo-inset);
-  --shadow-dropdown: var(--shadow-dropdown);
+  --color-fg-negative: var(--fg-negative);
 
   --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
   --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
@@ -49,5 +46,11 @@
   .h-screen {
     height: 100vh;
     height: 100dvh;
+  }
+}
+
+@layer base {
+  :root {
+    interpolate-size: allow-keywords;
   }
 }
