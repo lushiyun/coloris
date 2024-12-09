@@ -8,13 +8,16 @@ export default async function CollectionsLayout({
 }) {
   const themes = await getThemes();
 
+  console.log("themes", themes);
+
   return (
     <>
       <div className="border-border w-full rounded-2xl border p-4">
         <ul className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-          {themes.map((theme) => (
-            <CollectionItem key={theme.id} theme={theme} />
-          ))}
+          {!!themes?.length &&
+            themes.map((theme) => (
+              <CollectionItem key={theme.id} theme={theme} />
+            ))}
         </ul>
       </div>
       {children}
