@@ -38,7 +38,7 @@ export default function Home() {
       <h2>One-off projects</h2>
 
       <p>
-        Use the web app to generate primative CSS variables for your accent and
+        Use this web app to generate primative CSS variables for your accent and
         background colors. Copy the code and remove the variables you don&apos;t
         need.
       </p>
@@ -74,14 +74,13 @@ const colors = coloris({
         </code>
       </pre>
 
-			<p>
-        Use in server rendered components.
-      </p>
+      <p>Use in React server components.</p>
 
-			<pre>
+      <pre>
 				<code>
 {
 `import { coloris } from "coloris-js";
+import { getTheme } from "@/lib/fetchers";
 
 export default async function Layout({
   children,

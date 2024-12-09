@@ -15,7 +15,9 @@ import {
 
 function generateColors({
   appearance,
-  ...args
+  accent,
+  neutral,
+  background,
 }: {
   appearance: 'light' | 'dark';
   accent: string;
@@ -24,10 +26,16 @@ function generateColors({
 }): GeneratedColors {
   const allScales = appearance === 'light' ? lightColors : darkColors;
   const grayScales = appearance === 'light' ? lightGrayColors : darkGrayColors;
-  const backgroundColor = new Color(args.background).to('oklch');
-  const grayScaleColors = grayScales[args.neutral];
+  const backgroundColor = new Color(background).to('oklch');
 
-  const accentBaseColor = new Color(args.accent).to('oklch');
+  const grayScaleColors = grayScales[neutral];
+  if (!grayScaleColors) {
+    throw new Error(
+      `Invalid neutral scale name: "${neutral}". Available scales: ${Object.keys(grayScales).join(', ')}`,
+    );
+  }
+
+  const accentBaseColor = new Color(accent).to('oklch');
 
   let accentScaleColors = getScaleFromColor(
     accentBaseColor,

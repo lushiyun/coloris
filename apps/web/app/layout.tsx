@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
-import { coloris } from "coloris-js";
 import { Header } from "@/components/header";
 import { ColorSwatches } from "@/components/features/color-swatches";
 import "@/styles/global.css";
@@ -22,20 +21,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cssVariables = coloris({
-    appearance: "light",
-    accent: "#BCFB46",
-    background: "#ffffff",
-    neutral: "sand",
-  });
-
   return (
     <ViewTransitions>
       <html lang="en">
         <body
           className={`${generalSans.variable} container mx-auto flex min-h-screen flex-col px-6`}
         >
-          <style>{cssVariables}</style>
           <Header />
           <main className="flex grow gap-x-6">
             <div className="sticky top-14 flex h-fit w-45 justify-center">

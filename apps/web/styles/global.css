@@ -11,6 +11,9 @@
   --color-bg-inversed: var(--bg-inversed);
   --color-fg-inversed: var(--fg-inversed);
 
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
   --color-primary: var(--primary);
   --color-fg-primary: var(--fg-primary);
   --color-primary-hover: var(--primary-hover);

@@ -1,6 +1,5 @@
+import { arrayOf12 } from "@/lib/helpers/array-of-12";
 import styles from "@/styles/color-swatches.module.css";
-
-const arrayOf12 = Array.from({ length: 12 }, (_, i) => i + 1);
 
 export function ColorSwatches() {
   return (
@@ -10,7 +9,7 @@ export function ColorSwatches() {
           <button
             type="button"
             key={number}
-            className={`ease-fluid block size-12 cursor-pointer rounded-xl transition transition-transform hover:ring-2 hover:ring-[var(--accent-8)] hover:ring-offset-0 active:scale-95 ${styles.accent}`}
+            className={`ease-fluid block size-12 cursor-pointer rounded-xl transition hover:ring-2 hover:ring-[var(--accent-8)] hover:ring-offset-0 active:scale-95 ${styles.accent}`}
           />
         ))}
       </ul>
@@ -20,7 +19,7 @@ export function ColorSwatches() {
           <button
             type="button"
             key={number}
-            className={`ease-fluid block size-12 cursor-pointer rounded-xl transition transition-transform hover:ring-2 hover:ring-[var(--neutral-8)] hover:ring-offset-0 active:scale-95 ${styles.neutral}`}
+            className={`ease-fluid block size-12 cursor-pointer rounded-xl transition hover:ring-2 hover:ring-[var(--neutral-8)] hover:ring-offset-0 active:scale-95 ${styles.neutral}`}
           />
         ))}
       </ul>

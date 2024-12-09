@@ -2,13 +2,13 @@ import { Tooltip } from "./core/tooltip";
 
 export function Footer() {
   return (
-    <footer className="text-fg-secondary flex items-center justify-end gap-x-4 py-6">
+    <footer className="text-muted-foreground flex items-center justify-end gap-x-4 py-6">
       <Tooltip content="Download npm package">
         <a
           href="http://shiyunlu.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-fg-secondary hover:text-fg-primary transition-colors"
+          className="hover:text-fg transition-colors"
         >
           NPM
         </a>
@@ -19,7 +19,7 @@ export function Footer() {
           href="https://github.com/shiyunlu/coloris-js"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-fg-secondary hover:text-fg-primary transition-colors"
+          className="hover:text-fg transition-colors"
         >
           Github
         </a>

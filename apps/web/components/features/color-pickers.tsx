@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
-import { generateColors } from "coloris-js";
+import { generateColors, type NeutralScaleName } from "coloris-js";
 import { HexColorPicker, HexColorInput } from "react-colorful";
 import { useColorStore } from "@/lib/store";
 import {
@@ -10,65 +10,27 @@ import {
   PopoverTrigger,
 } from "@/components/core/popover";
 import { Button } from "@/components/core/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@/components/core/select";
+import { arrayOf12 } from "@/lib/helpers/array-of-12";
+import { Tooltip } from "@/components/core/tooltip";
+import styles from "@/styles/color-swatches.module.css";
+import { cn } from "@/lib/helpers/cn";
+
+const NEUTRAL_SCALES = [
+  "gray",
+  "mauve",
+  "slate",
+  "sage",
+  "olive",
+  "sand",
+] as NeutralScaleName[];
 
 function ColorPickers() {
   const { accent, neutral, background, setAccent, setNeutral, setBackground } =
     useColorStore();
 
   useEffect(() => {
-    const colors = generateColors({
-      appearance: "light",
-      accent,
-      background,
-      neutral: "sand",
-    });
-    const root = document.documentElement;
-
-    const supportsOKLCH = window.CSS && CSS.supports("color", "oklch(0% 0 0)");
-    const supportsP3 = window.CSS && CSS.supports("color", "p3(0 0 0)");
-
-    if (supportsOKLCH) {
-      colors.accentScaleWideGamut.forEach((color, i) => {
-        root.style.setProperty(`--accent-${i + 1}`, color);
-      });
-      colors.grayScaleWideGamut.forEach((color, i) => {
-        root.style.setProperty(`--neutral-${i + 1}`, color);
-      });
-      root.style.setProperty("--neutral-surface", colors.graySurfaceWideGamut);
-      root.style.setProperty("--accent-surface", colors.accentSurfaceWideGamut);
-    } else if (supportsP3) {
-      colors.accentScaleAlphaWideGamut.forEach((color, i) => {
-        root.style.setProperty(`--accent-a${i + 1}`, color);
-      });
-      colors.grayScaleAlphaWideGamut.forEach((color, i) => {
-        root.style.setProperty(`--neutral-a${i + 1}`, color);
-      });
-    } else {
-      colors.accentScale.forEach((color, i) => {
-        root.style.setProperty(`--accent-${i + 1}`, color);
-      });
-      colors.accentScaleAlpha.forEach((color, i) => {
-        root.style.setProperty(`--accent-a${i + 1}`, color);
-      });
-      colors.grayScale.forEach((color, i) => {
-        root.style.setProperty(`--neutral-${i + 1}`, color);
-      });
-      colors.grayScaleAlpha.forEach((color, i) => {
-        root.style.setProperty(`--neutral-a${i + 1}`, color);
-      });
-      root.style.setProperty("--neutral-surface", colors.graySurface);
-      root.style.setProperty("--accent-surface", colors.accentSurface);
-    }
-
-    root.style.setProperty("--background", colors.background);
-    root.style.setProperty("--accent-contrast", colors.accentContrast);
-  }, [accent, background]);
+    setColorProperties(accent, background, neutral);
+  }, [accent, background, neutral]);
 
   return (
     <div className="flex items-center gap-4">
@@ -102,17 +64,42 @@ function NeutralColorPicker({
   onChange,
 }: {
   children: ReactNode;
-  color: string;
-  onChange: (color: string) => void;
+  color: NeutralScaleName;
+  onChange: (color: NeutralScaleName) => void;
 }) {
   return (
-    <Select value={color} onValueChange={onChange}>
-      <SelectTrigger asChild>{children}</SelectTrigger>
-      <SelectContent>
-        <SelectItem value="#000000">Black</SelectItem>
-        <SelectItem value="#ffffff">White</SelectItem>
-      </SelectContent>
-    </Select>
+    <Popover>
+      <PopoverTrigger asChild>{children}</PopoverTrigger>
+      <PopoverContent>
+        <div className="flex w-full flex-col items-center gap-2">
+          <ul className="flex flex-col gap-2">
+            {NEUTRAL_SCALES.map((scale) => (
+              <Tooltip key={scale} content={scale}>
+                <button
+                  key={scale}
+                  className={cn(
+                    "hover:bg-muted cursor-pointer p-1 transition-colors",
+                    {
+                      "ring-ring ring-2 ring-offset-0": scale === color,
+                    },
+                  )}
+                  onClick={() => onChange(scale)}
+                >
+                  <ul className="flex items-center">
+                    {arrayOf12.map((number) => (
+                      <li
+                        key={number}
+                        className={`bg-neutral-1 size-6 ${styles[scale]}`}
+                      />
+                    ))}
+                  </ul>
+                </button>
+              </Tooltip>
+            ))}
+          </ul>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }
 
@@ -142,13 +129,73 @@ function ColorPicker({
   );
 }
 
-function ColorSwatch({ color }: { color: string }) {
+function ColorSwatch({ color }: { color: string | NeutralScaleName }) {
+  const isNeutral = NEUTRAL_SCALES.includes(color as NeutralScaleName);
+
   return (
     <span
-      className="border-border size-5 rounded-full border ring-4 ring-white ring-offset-0"
-      style={{ backgroundColor: color }}
+      className={cn(
+        "border-border size-5 rounded-full border ring-4 ring-white ring-offset-0",
+        {
+          "bg-neutral-1": isNeutral,
+        },
+      )}
+      style={{ backgroundColor: isNeutral ? `var(--${color}-8)` : color }}
     />
   );
+}
+
+function setColorProperties(
+  accent: string,
+  background: string,
+  neutral: string,
+) {
+  const colors = generateColors({
+    appearance: "light",
+    accent,
+    background,
+    neutral,
+  });
+  const root = document.documentElement;
+
+  const supportsOKLCH = window.CSS && CSS.supports("color", "oklch(0% 0 0)");
+  const supportsP3 = window.CSS && CSS.supports("color", "p3(0 0 0)");
+
+  if (supportsOKLCH) {
+    colors.accentScaleWideGamut.forEach((color, i) => {
+      root.style.setProperty(`--accent-${i + 1}`, color);
+    });
+    colors.grayScaleWideGamut.forEach((color, i) => {
+      root.style.setProperty(`--neutral-${i + 1}`, color);
+    });
+    root.style.setProperty("--neutral-surface", colors.graySurfaceWideGamut);
+    root.style.setProperty("--accent-surface", colors.accentSurfaceWideGamut);
+  } else if (supportsP3) {
+    colors.accentScaleAlphaWideGamut.forEach((color, i) => {
+      root.style.setProperty(`--accent-a${i + 1}`, color);
+    });
+    colors.grayScaleAlphaWideGamut.forEach((color, i) => {
+      root.style.setProperty(`--neutral-a${i + 1}`, color);
+    });
+  } else {
+    colors.accentScale.forEach((color, i) => {
+      root.style.setProperty(`--accent-${i + 1}`, color);
+    });
+    colors.accentScaleAlpha.forEach((color, i) => {
+      root.style.setProperty(`--accent-a${i + 1}`, color);
+    });
+    colors.grayScale.forEach((color, i) => {
+      root.style.setProperty(`--neutral-${i + 1}`, color);
+    });
+    colors.grayScaleAlpha.forEach((color, i) => {
+      root.style.setProperty(`--neutral-a${i + 1}`, color);
+    });
+    root.style.setProperty("--neutral-surface", colors.graySurface);
+    root.style.setProperty("--accent-surface", colors.accentSurface);
+  }
+
+  root.style.setProperty("--background", colors.background);
+  root.style.setProperty("--accent-contrast", colors.accentContrast);
 }
 
 export { ColorPickers };
