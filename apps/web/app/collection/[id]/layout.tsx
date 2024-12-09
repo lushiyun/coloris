@@ -6,9 +6,10 @@ export default async function CollectionLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const theme = await getTheme(params.id);
+  const themeId = (await params).id;
+  const theme = await getTheme(themeId);
 
   let cssVariables: string | null = null;
   if (theme) {
