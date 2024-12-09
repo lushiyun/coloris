@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="bg-bg flex items-center justify-end gap-x-3 py-4 text-xs">
       <Tooltip content="Download npm package">
         <a
-          href="http://shiyunlu.com"
+          href="https://www.npmjs.com/package/coloris-js"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-fg text-[var(--neutral-11)] transition-colors"
@@ -16,7 +16,7 @@ export function Footer() {
 
       <Tooltip content="Source code">
         <a
-          href="https://github.com/shiyunlu/coloris-js"
+          href="https://github.com/shiyunlu/coloris"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-fg text-[var(--neutral-11)] transition-colors"
