@@ -1,0 +1,23 @@
+.gray {
+  background-color: var(--gray-8);
+}
+
+.mauve {
+  background-color: var(--mauve-8);
+}
+
+.slate {
+  background-color: var(--slate-8);
+}
+
+.sage {
+  background-color: var(--sage-8);
+}
+
+.olive {
+  background-color: var(--olive-8);
+}
+
+.sand {
+  background-color: var(--sand-8);
+}

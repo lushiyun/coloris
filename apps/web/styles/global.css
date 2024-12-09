@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./variables.css" layer(theme);
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-fg: var(--fg-fg);
+  --color-bg: var(--bg);
+
+  --color-bg-inversed: var(--bg-inversed);
+  --color-fg-inversed: var(--fg-inversed);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-primary: var(--primary);
+  --color-fg-primary: var(--fg-primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-secondary-hover: var(--secondary-hover);
+
+  --color-outline-hover: var(--outline-hover);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+
+  --color-disabled: var(--disabled);
+  --color-fg-disabled: var(--fg-disabled);
+
+  --color-positive: var(--positive);
+  --color-fg-positive: var(--fg-positive);
+
+  --color-alert: var(--alert);
+  --color-fg-alert: var(--fg-alert);
+
+  --color-negative: var(--negative);
+  --color-fg-negative: var(--fg-negative);
+
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+
+  --animate-in: in 0.2s var(--ease-fluid);
+  --animate-out: out 0.2s var(--ease-fluid);
+}
+
+@layer utilities {
+  .h-screen {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+
+@layer base {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+}
