@@ -1,5 +1,5 @@
 import { Sample } from "@/components/features/sample";
 
-export default function CollectionPage() {
+export default function SamplePage() {
   return <Sample />;
 }

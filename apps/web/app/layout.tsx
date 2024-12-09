@@ -31,10 +31,7 @@ export default function RootLayout({
           <ThemeProvider />
           <Header />
           <main className="py-6">
-            <div className="space-y-6">
-              <Color />
-              {children}
-            </div>
+            <div className="space-y-6">{children}</div>
           </main>
           <Footer />
         </body>

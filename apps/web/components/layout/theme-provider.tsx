@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { useColorStore } from "@/lib/store";
 
 export function ThemeProvider() {
-  const { setColorProperties } = useColorStore();
+  const { setColorPropertiesFromClient } = useColorStore();
 
   useEffect(() => {
-    setColorProperties();
-  }, [setColorProperties]);
+    setColorPropertiesFromClient();
+  }, [setColorPropertiesFromClient]);
 
   return null;
 }

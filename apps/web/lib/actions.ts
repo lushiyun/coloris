@@ -15,6 +15,20 @@ const neutralScaleNames = [
   "sand",
 ] as const;
 
+export async function getThemes() {
+  const themes = await db.selectFrom("theme").selectAll().execute();
+  return themes;
+}
+
+export async function getTheme(id: string) {
+  const theme = await db
+    .selectFrom("theme")
+    .selectAll()
+    .where("id", "=", id)
+    .executeTakeFirst();
+  return theme;
+}
+
 export async function createTheme(prevState: any, formData: FormData) {
   const name = formData.get("name") as string;
   const accent = formData.get("accent") as string;

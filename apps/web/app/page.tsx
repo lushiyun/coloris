@@ -1,5 +1,5 @@
-import { Docs } from "@/components/layout/docs";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  return <Docs />;
+  return redirect("/docs");
 }
