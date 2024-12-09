@@ -14,7 +14,8 @@ import { arrayOf12 } from "@/lib/helpers/array-of-12";
 import { Tooltip } from "@/components/core/tooltip";
 import styles from "@/styles/color-swatches.module.css";
 import { cn } from "@/lib/helpers/cn";
-import { Save } from "lucide-react";
+import { SaveColorDialog } from "./save-color-dialog";
+import { inputVariants } from "../core/input";
 
 const NEUTRAL_SCALES = [
   "gray",
@@ -52,11 +53,7 @@ function ColorPickers() {
         </Button>
       </ColorPicker>
 
-      <Button variant="outline" size="icon" className="size-10">
-        <Tooltip content="Save">
-          <Save className="size-5" />
-        </Tooltip>
-      </Button>
+      <SaveColorDialog />
     </div>
   );
 }
@@ -124,7 +121,7 @@ function ColorPicker({
           <HexColorInput
             color={color}
             onChange={onChange}
-            className="border-border bg-bg placeholder:text-fg-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-0 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            className={cn(inputVariants())}
           />
         </div>
       </PopoverContent>

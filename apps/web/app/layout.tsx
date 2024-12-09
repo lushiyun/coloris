@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import "@/styles/global.css";
 import { Color } from "@/components/features/color";
 import { ThemeProvider } from "@/components/layout/theme-provider";
+import { Footer } from "@/components/layout/footer";
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans.woff2",
@@ -35,6 +36,7 @@ export default function RootLayout({
               {children}
             </div>
           </main>
+          <Footer />
         </body>
       </html>
     </ViewTransitions>

@@ -13,7 +13,7 @@
   --fg-inversed: var(--background);
 
   --muted: var(--neutral-3);
-  --muted-foreground: var(--neutral-8);
+  --muted-foreground: var(--neutral-10);
 
   --primary: var(--accent-9);
   --fg-primary: var(--accent-contrast);

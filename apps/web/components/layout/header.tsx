@@ -1,4 +1,5 @@
 import { Tooltip } from "../core/tooltip";
+import { Nav } from "./nav";
 
 export function Header() {
   return (
@@ -6,30 +7,7 @@ export function Header() {
       <Tooltip content="Programmatic color css variables generator for multi-theme platforms">
         <h1 className="font-mono text-lg">coloris.js</h1>
       </Tooltip>
-
-      <div className="flex items-center gap-x-3 text-xs">
-        <Tooltip content="Download npm package">
-          <a
-            href="http://shiyunlu.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-fg transition-colors"
-          >
-            NPM
-          </a>
-        </Tooltip>
-
-        <Tooltip content="Source code">
-          <a
-            href="https://github.com/shiyunlu/coloris-js"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-fg transition-colors"
-          >
-            Github
-          </a>
-        </Tooltip>
-      </div>
+      <Nav />
     </header>
   );
 }
