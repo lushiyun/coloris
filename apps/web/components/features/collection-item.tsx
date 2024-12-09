@@ -10,14 +10,15 @@ import { cn } from "@/lib/helpers/cn";
 export function CollectionItem({ theme }: { theme: Theme }) {
   const pathname = usePathname();
   const pathnameParts = pathname.split("/");
-  const isActive = pathnameParts[pathnameParts.length - 1] === theme.id;
+  const isActive = pathnameParts.at(-1) === theme.id.toString();
+
   return (
     <Tooltip key={theme.id} content={theme.name}>
       <Link
         key={theme.id}
         href={`/collection/${theme.id}`}
         className={cn(
-          "border-border grid h-40 w-full cursor-pointer grid-rows-[45%_30%_25%] overflow-hidden rounded-2xl border transition hover:scale-[0.98]",
+          "border-border grid size-8 cursor-pointer grid-rows-[45%_30%_25%] overflow-hidden rounded-lg border transition hover:scale-[0.95]",
           {
             "ring-2 ring-offset-0": isActive,
           },
