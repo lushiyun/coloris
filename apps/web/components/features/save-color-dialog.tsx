@@ -3,7 +3,7 @@
 import { Save } from "lucide-react";
 import { Button } from "@/components/core/button";
 import { Tooltip } from "@/components/core/tooltip";
-import { useId, useRef } from "react";
+import { useRef } from "react";
 import { SaveColorForm } from "./save-color-form";
 
 export function SaveColorDialog() {

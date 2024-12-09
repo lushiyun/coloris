@@ -20,6 +20,7 @@ export async function up(db: Kysely<any>): Promise<void> {
       "neutral",
       "background",
     ])
+    .addUniqueConstraint("name_unique", ["name"])
     .execute();
 }
 

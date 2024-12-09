@@ -1,19 +1,32 @@
-import type { RefObject } from "react";
+"use client";
+
+import { useActionState, type RefObject } from "react";
 import { Button } from "@/components/core/button";
 import styles from "@/styles/color-swatches.module.css";
 import { arrayOf12 } from "@/lib/helpers/array-of-12";
 import { Input } from "@/components/core/input";
 import { Label } from "../core/label";
+import { createTheme } from "@/lib/actions";
+import { Loader2 } from "lucide-react";
+import { useColorStore } from "@/lib/store";
+import { cn } from "@/lib/helpers/cn";
 
 export function SaveColorForm({
   ref,
 }: {
   ref: RefObject<HTMLDialogElement | null>;
 }) {
+  const { accent, neutral, background } = useColorStore();
+  const [state, formAction, isPending] = useActionState(createTheme, {
+    status: "",
+    message: "",
+  });
+
   return (
     <form
       id="save-color-form"
       className="flex w-full flex-col items-center gap-4"
+      action={formAction}
     >
       <h2 className="text-xl font-medium">Save Color</h2>
 
@@ -43,8 +56,27 @@ export function SaveColorForm({
 
       <div className="flex w-full flex-col gap-2 py-2">
         <Label htmlFor="name">Name</Label>
-        <Input id="name" placeholder="Give your theme a name" />
+        <Input
+          id="name"
+          name="name"
+          placeholder="Give your theme a name"
+          required
+        />
+        {state.message && (
+          <p
+            className={cn("text-sm", {
+              "text-fg-negative": state.status === "error",
+              "text-fg-positive": state.status === "success",
+            })}
+          >
+            {state.message}
+          </p>
+        )}
       </div>
+
+      <input type="hidden" name="accent" value={accent} />
+      <input type="hidden" name="neutral" value={neutral} />
+      <input type="hidden" name="background" value={background} />
 
       <div className="flex w-full items-center justify-between gap-4">
         <Button
@@ -55,7 +87,10 @@ export function SaveColorForm({
         >
           Cancel
         </Button>
-        <Button type="submit" className="min-w-24">
+        <Button type="submit" className="min-w-24" disabled={isPending}>
+          {isPending && (
+            <Loader2 className="text-fg-primary mr-1 size-4 animate-spin" />
+          )}
           Save
         </Button>
       </div>

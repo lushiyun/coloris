@@ -12,7 +12,7 @@ export interface ThemeTable {
   neutral: string;
   background: string;
 
-  created_at: ColumnType<Date, Date | string, Date | string>;
+  created_at: ColumnType<Date, string | undefined, never>;
 }
 
 export type Theme = Selectable<ThemeTable>;
