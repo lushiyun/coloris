@@ -4,6 +4,7 @@ import { ViewTransitions } from "next-view-transitions";
 import { Header } from "@/components/layout/header";
 import "@/styles/global.css";
 import { Color } from "@/components/features/color";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans.woff2",
@@ -26,6 +27,7 @@ export default function RootLayout({
         <body
           className={`${generalSans.variable} mx-auto max-w-[calc(65ch+3rem)] px-6`}
         >
+          <ThemeProvider />
           <Header />
           <main className="py-6">
             <div className="space-y-6">
