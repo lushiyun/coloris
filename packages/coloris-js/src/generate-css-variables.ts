@@ -10,7 +10,7 @@ ${colors.accentScaleWideGamut
   /* Neutral Scale */
 ${colors.grayScaleWideGamut
   .map((color: string, i: number) => `  --neutral-${i + 1}: ${color};`)
-  .join("\n")}
+  .join('\n')}
 
   /* Accent Scale Alpha */
 ${colors.accentScaleAlphaWideGamut

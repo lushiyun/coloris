@@ -29,7 +29,13 @@ export async function getTheme(id: string) {
   return theme;
 }
 
-export async function createTheme(prevState: any, formData: FormData) {
+export async function createTheme(
+  prevState: {
+    status: string;
+    message: string;
+  },
+  formData: FormData,
+) {
   const name = formData.get("name") as string;
   const accent = formData.get("accent") as string;
   const neutral = formData.get("neutral") as string;

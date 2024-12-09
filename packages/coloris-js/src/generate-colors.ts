@@ -1,11 +1,8 @@
-// @ts-nocheck
-
 import Color from 'colorjs.io';
 import BezierEasing from 'bezier-easing';
-import type { ArrayOf12, GeneratedColors } from './types.js';
+import type { ArrayOf12, GeneratedColors, NeutralScaleName } from './types.js';
 import {
   arrayOf12,
-  scaleNames,
   grayScaleNames,
   lightColors,
   darkColors,
