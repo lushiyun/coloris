@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
-import { generateColors, type NeutralScaleName } from "coloris-js";
+import { type ReactNode } from "react";
+import { type NeutralScaleName } from "coloris-js";
 import { HexColorPicker, HexColorInput } from "react-colorful";
 import { useColorStore } from "@/lib/store";
 import {
@@ -14,6 +14,7 @@ import { arrayOf12 } from "@/lib/helpers/array-of-12";
 import { Tooltip } from "@/components/core/tooltip";
 import styles from "@/styles/color-swatches.module.css";
 import { cn } from "@/lib/helpers/cn";
+import { Save } from "lucide-react";
 
 const NEUTRAL_SCALES = [
   "gray",
@@ -28,32 +29,34 @@ function ColorPickers() {
   const { accent, neutral, background, setAccent, setNeutral, setBackground } =
     useColorStore();
 
-  useEffect(() => {
-    setColorProperties(accent, background, neutral);
-  }, [accent, background, neutral]);
-
   return (
-    <div className="flex items-center gap-4">
+    <div className="flex flex-wrap items-center gap-2">
       <ColorPicker color={accent} onChange={setAccent}>
-        <Button variant="default">
+        <Button size="sm">
           <ColorSwatch color={accent} />
           <span className="ml-1">Accent</span>
         </Button>
       </ColorPicker>
 
       <NeutralColorPicker color={neutral} onChange={setNeutral}>
-        <Button variant="secondary">
+        <Button variant="secondary" size="sm">
           <ColorSwatch color={neutral} />
           <span className="ml-1">Neutral</span>
         </Button>
       </NeutralColorPicker>
 
       <ColorPicker color={background} onChange={setBackground}>
-        <Button variant="outline">
+        <Button variant="outline" size="sm">
           <ColorSwatch color={background} />
           <span className="ml-1">Background</span>
         </Button>
       </ColorPicker>
+
+      <Button variant="outline" size="icon" className="size-10">
+        <Tooltip content="Save">
+          <Save className="size-5" />
+        </Tooltip>
+      </Button>
     </div>
   );
 }
@@ -143,59 +146,6 @@ function ColorSwatch({ color }: { color: string | NeutralScaleName }) {
       style={{ backgroundColor: isNeutral ? `var(--${color}-8)` : color }}
     />
   );
-}
-
-function setColorProperties(
-  accent: string,
-  background: string,
-  neutral: string,
-) {
-  const colors = generateColors({
-    appearance: "light",
-    accent,
-    background,
-    neutral,
-  });
-  const root = document.documentElement;
-
-  const supportsOKLCH = window.CSS && CSS.supports("color", "oklch(0% 0 0)");
-  const supportsP3 = window.CSS && CSS.supports("color", "p3(0 0 0)");
-
-  if (supportsOKLCH) {
-    colors.accentScaleWideGamut.forEach((color, i) => {
-      root.style.setProperty(`--accent-${i + 1}`, color);
-    });
-    colors.grayScaleWideGamut.forEach((color, i) => {
-      root.style.setProperty(`--neutral-${i + 1}`, color);
-    });
-    root.style.setProperty("--neutral-surface", colors.graySurfaceWideGamut);
-    root.style.setProperty("--accent-surface", colors.accentSurfaceWideGamut);
-  } else if (supportsP3) {
-    colors.accentScaleAlphaWideGamut.forEach((color, i) => {
-      root.style.setProperty(`--accent-a${i + 1}`, color);
-    });
-    colors.grayScaleAlphaWideGamut.forEach((color, i) => {
-      root.style.setProperty(`--neutral-a${i + 1}`, color);
-    });
-  } else {
-    colors.accentScale.forEach((color, i) => {
-      root.style.setProperty(`--accent-${i + 1}`, color);
-    });
-    colors.accentScaleAlpha.forEach((color, i) => {
-      root.style.setProperty(`--accent-a${i + 1}`, color);
-    });
-    colors.grayScale.forEach((color, i) => {
-      root.style.setProperty(`--neutral-${i + 1}`, color);
-    });
-    colors.grayScaleAlpha.forEach((color, i) => {
-      root.style.setProperty(`--neutral-a${i + 1}`, color);
-    });
-    root.style.setProperty("--neutral-surface", colors.graySurface);
-    root.style.setProperty("--accent-surface", colors.accentSurface);
-  }
-
-  root.style.setProperty("--background", colors.background);
-  root.style.setProperty("--accent-contrast", colors.accentContrast);
 }
 
 export { ColorPickers };

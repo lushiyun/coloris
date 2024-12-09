@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
-import { Header } from "@/components/header";
-import { ColorSwatches } from "@/components/features/color-swatches";
+import { Header } from "@/components/layout/header";
 import "@/styles/global.css";
-import { Footer } from "@/components/footer";
+import { Color } from "@/components/features/color";
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans.woff2",
@@ -25,16 +24,15 @@ export default function RootLayout({
     <ViewTransitions>
       <html lang="en">
         <body
-          className={`${generalSans.variable} container mx-auto flex min-h-screen flex-col px-6`}
+          className={`${generalSans.variable} mx-auto max-w-[calc(65ch+3rem)] px-6`}
         >
           <Header />
-          <main className="flex grow gap-x-6">
-            <div className="sticky top-14 flex h-fit w-45 justify-center">
-              <ColorSwatches />
+          <main className="py-6">
+            <div className="space-y-6">
+              <Color />
+              {children}
             </div>
-            {children}
           </main>
-          <Footer />
         </body>
       </html>
     </ViewTransitions>
