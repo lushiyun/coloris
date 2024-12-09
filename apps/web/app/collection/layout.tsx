@@ -11,7 +11,7 @@ export default async function CollectionsLayout({
   return (
     <>
       <div className="border-border w-full rounded-2xl border p-4">
-        <ul className="grid grid-cols-2 gap-6 sm:grid-cols-3">
+        <ul className="flex flex-wrap gap-3">
           {!!themes?.length &&
             themes.map((theme) => (
               <CollectionItem key={theme.id} theme={theme} />

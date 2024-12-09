@@ -16,7 +16,7 @@ export function Footer() {
 
       <Tooltip content="Source code">
         <a
-          href="https://github.com/shiyunlu/coloris"
+          href="https://github.com/lushiyun/coloris"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-fg text-[var(--neutral-11)] transition-colors"
